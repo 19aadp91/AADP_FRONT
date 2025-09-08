@@ -41,14 +41,9 @@ export class ProductoFormComponent {
         fechaCreacion: new Date(this.form.get('fechaCreacion')?.value ?? '')
       };
 
-      this.productoService.create(nuevoProducto).subscribe({
-        next: (response) => {
-          console.log('Producto creado:', response.mensaje);
-          this.modalRef.close(response.mensaje);
-        },
-        error: (err) => {
-          console.error('Error al crear el producto:', err);
-        }
+      this.productoService.create(nuevoProducto).subscribe(data => {
+          console.log('Producto creado:', data.mensaje);
+          this.modalRef.close(data.mensaje);
       });
     }
   }
