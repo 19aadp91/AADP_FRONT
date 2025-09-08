@@ -1,0 +1,43 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background-color: #001529;
+  color: white;
+}
+
+.header-content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.footer {
+  text-align: center;
+  padding: 12px;
+  background-color: #f0f2f5;
+}
+
+.logout-button {
+  background-color: #ff4d4f;
+  color: #fff;
+  border: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #d9363e;
+    color: #fff;
+  }
+
+  i[nz-icon] {
+    margin-right: 6px;
+  }
+}
+

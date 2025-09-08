@@ -1,0 +1,17 @@
+<nz-layout>
+  <nz-header class="header">
+    <div class="header-content">
+      <span class="app-title">AADP</span>
+      <button nz-button nzType="default" nzShape="round" nzSize="small" class="logout-button" (click)="SignOff()">
+        <i nz-icon nzType="logout" nzTheme="outline"></i>
+        Cerrar sesión
+      </button>
+    </div>
+  </nz-header>
+
+  <nz-content>
+    <router-outlet></router-outlet>
+  </nz-content>
+
+  <nz-footer class="footer">© 2025 AADP</nz-footer>
+</nz-layout>

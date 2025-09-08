@@ -1,0 +1,34 @@
+<nz-table
+  [nzData]="productos"
+  [nzBordered]="true"
+  [nzSize]="'middle'"
+  [nzScroll]="{ x: '1000px' }"
+  [nzShowPagination]="false"
+>
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Referencia</th>
+      <th>Precio</th>
+      <th>Estado</th>
+      <th>Unidad</th>
+      <th>Creación</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of productos; track item.codigoProducto) {
+      <tr>
+        <td>{{ item.codigoProducto }}</td>
+        <td>{{ item.nombre }}</td>
+        <td>{{ item.descripcion }}</td>
+        <td>{{ item.referenciaInterna }}</td>
+        <td>{{ item.precioUnitario | currency:'COP' }}</td>
+        <td>{{ item.estado }}</td>
+        <td>{{ item.unidadMedida }}</td>
+        <td>{{ item.fechaCreacion | date:'short' }}</td>
+      </tr>
+    }
+  </tbody>
+</nz-table>
