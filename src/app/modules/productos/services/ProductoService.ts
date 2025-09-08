@@ -19,8 +19,11 @@ export class ProductoService {
   }
 
   delete(id: number): Observable<void> {
-  return this.http.delete<void>(`${this.urlBase}/Delete/${id}`);
+    return this.http.delete<void>(`${this.urlBase}/Delete/${id}`);
   }
 
-  
+  update(producto: Producto): Observable<void> {
+    return this.http.put<void>(`${this.urlBase}/Update`, producto);
+  }
+
 }
