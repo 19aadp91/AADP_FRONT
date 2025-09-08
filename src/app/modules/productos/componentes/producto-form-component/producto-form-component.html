@@ -1,0 +1,30 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label>Código</label>
+  <input nz-input formControlName="codigoProducto" />
+
+  <label>Nombre</label>
+  <input nz-input formControlName="nombre" />
+
+  <label>Descripción</label>
+  <input nz-input formControlName="descripcion" />
+
+  <label>Referencia Interna</label>
+  <input nz-input formControlName="referenciaInterna" />
+
+  <label>Precio Unitario</label>
+  <input nz-input type="number" formControlName="precioUnitario" />
+
+  <label>Estado</label>
+  <input nz-input formControlName="estado" />
+
+  <label>Unidad de Medida</label>
+  <input nz-input formControlName="unidadMedida" />
+
+  <label>Fecha de Creación</label>
+  <nz-date-picker formControlName="fechaCreacion"></nz-date-picker>
+
+  <div class="modal-footer">
+    <button nz-button nzType="default" (click)="cancel()">Cancelar</button>
+    <button nz-button nzType="primary" [disabled]="form.invalid" htmlType="submit">Guardar</button>
+  </div>
+</form>

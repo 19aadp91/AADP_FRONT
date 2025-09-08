@@ -8,9 +8,14 @@ import { environment } from '../../../../environments/environment';
 export class ProductoService {
   private readonly urlBase: string = environment.apiProducto; // ajusta la URL
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAll(): Observable<Producto[]> {
     return this.http.get<Producto[]>(`${this.urlBase}/GetAll`);
   }
+
+  create(producto: Producto): Observable<{ mensaje: string }> {
+    return this.http.post<{ mensaje: string }>(`${this.urlBase}/Insert`, producto);
+  }
+
 }
