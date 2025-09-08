@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 import { ProductoFormComponent } from './componentes/producto-form-component/producto-form-component';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-productos',
@@ -36,9 +37,22 @@ export class Productos {
 
   productos: Producto[] = [];
 
-  constructor(private productoService: ProductoService, private modal: NzModalService) { }
+  constructor(private productoService: ProductoService, private modal: NzModalService,private message: NzMessageService) { }
 
   ngOnInit(): void {
     this.recargarProductos();
   }
+
+  eliminarProducto(id: number) {
+  this.productoService.delete(id).subscribe({
+    next: () => {
+      this.message.success('Producto eliminado correctamente');
+      this.recargarProductos();
+    },
+    error: (err) => {
+      this.message.error('Error al eliminar el producto');
+      console.error('Error al eliminar:', err);
+    }
+  });
+}
 }

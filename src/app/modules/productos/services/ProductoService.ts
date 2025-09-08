@@ -18,4 +18,9 @@ export class ProductoService {
     return this.http.post<{ mensaje: string }>(`${this.urlBase}/Insert`, producto);
   }
 
+  delete(id: number): Observable<void> {
+  return this.http.delete<void>(`${this.urlBase}/Delete/${id}`);
+  }
+
+  
 }
