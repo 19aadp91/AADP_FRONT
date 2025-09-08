@@ -15,6 +15,9 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   styleUrl: './producto-form-component.scss'
 })
 export class ProductoFormComponent {
+
+  esEdicion = false;
+
   form = new FormGroup({
     codigoProducto: new FormControl('', [Validators.required]),
     nombre: new FormControl('', [Validators.required]),
@@ -29,6 +32,9 @@ export class ProductoFormComponent {
   constructor(private productoService: ProductoService, private modalRef: NzModalRef, private message: NzMessageService,@Inject(NZ_MODAL_DATA) public data: { producto?: Producto }) 
   { 
     if (data.producto) {
+
+      this.esEdicion = true;
+
       this.form.patchValue({
       codigoProducto: String(data.producto.codigoProducto),
       nombre: data.producto.nombre,
@@ -39,6 +45,8 @@ export class ProductoFormComponent {
       unidadMedida: data.producto.unidadMedida,
       fechaCreacion: new Date(data.producto.fechaCreacion)
     });
+
+    this.form.get('codigoProducto')?.disable();
     }
   }
 
