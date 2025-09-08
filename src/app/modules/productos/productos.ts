@@ -11,6 +11,9 @@ import { NzTableModule } from 'ng-zorro-antd/table';
   styleUrl: './productos.scss'
 })
 export class Productos {
+agregarProducto() {
+throw new Error('Method not implemented.');
+}
 
   productos: Producto[] = [];
 

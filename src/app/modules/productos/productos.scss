@@ -1,6 +1,39 @@
-nz-table {
-  margin-top: 24px;
+.tabla-contenedor {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 16px;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.acciones-tabla {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+nz-table {
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.boton-agregar {
+  background: linear-gradient(135deg, #1890ff, #40a9ff);
+  color: #fff;
+  font-weight: 500;
+  padding: 8px 20px;
+  border: none;
+  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(135deg, #40a9ff, #69c0ff);
+    box-shadow: 0 6px 16px rgba(24, 144, 255, 0.4);
+  }
+
+  i[nz-icon] {
+    margin-right: 8px;
+    font-size: 16px;
+  }
 }
