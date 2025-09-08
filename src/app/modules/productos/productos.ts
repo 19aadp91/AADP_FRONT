@@ -14,20 +14,23 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   styleUrl: './productos.scss'
 })
 export class Productos {
-  agregarProducto() {
-    const modalRef = this.modal.create({
-      nzTitle: 'Agregar nuevo producto',
-      nzContent: ProductoFormComponent,
-      nzFooter: null,
-      nzWidth: 600
-    });
+  
+  agregarProducto(producto?: Producto) {
+  const modalRef = this.modal.create({
+    nzTitle: producto ? 'Editar producto' : 'Agregar nuevo producto',
+    nzContent: ProductoFormComponent,
+    nzFooter: null,
+    nzWidth: 600,
+    nzData: {
+      producto
+    }
+  });
 
-    modalRef.afterClose.subscribe((mensaje: string | undefined) => {
-      if (mensaje) {
-        this.recargarProductos();
-      }
-    });
-  }
+  modalRef.afterClose.subscribe(() => {
+    this.recargarProductos();
+  });
+}
+
 
   recargarProductos() {
     this.productoService.getAll().subscribe(data => {
@@ -37,22 +40,22 @@ export class Productos {
 
   productos: Producto[] = [];
 
-  constructor(private productoService: ProductoService, private modal: NzModalService,private message: NzMessageService) { }
+  constructor(private productoService: ProductoService, private modal: NzModalService, private message: NzMessageService) { }
 
   ngOnInit(): void {
     this.recargarProductos();
   }
 
   eliminarProducto(id: number) {
-  this.productoService.delete(id).subscribe({
-    next: () => {
-      this.message.success('Producto eliminado correctamente');
-      this.recargarProductos();
-    },
-    error: (err) => {
-      this.message.error('Error al eliminar el producto');
-      console.error('Error al eliminar:', err);
-    }
-  });
-}
+    this.productoService.delete(id).subscribe({
+      next: () => {
+        this.message.success('Producto eliminado correctamente');
+        this.recargarProductos();
+      },
+      error: (err) => {
+        this.message.error('Error al eliminar el producto');
+        console.error('Error al eliminar:', err);
+      }
+    });
+  }
 }

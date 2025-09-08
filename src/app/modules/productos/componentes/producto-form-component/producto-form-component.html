@@ -1,3 +1,4 @@
+<h2>{{ data.producto ? 'Editar producto' : 'Agregar nuevo producto' }}</h2>
 <form [formGroup]="form" (ngSubmit)="submit()">
   <label>Código</label>
   <input nz-input formControlName="codigoProducto" />

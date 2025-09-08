@@ -21,6 +21,7 @@
                     <th>Estado</th>
                     <th>Unidad</th>
                     <th>Creación</th>
+                    <th>Editar</th>
                     <th>Eliminar</th>
                 </tr>
             </thead>
@@ -35,6 +36,13 @@
                     <td>{{ item.estado }}</td>
                     <td>{{ item.unidadMedida }}</td>
                     <td>{{ item.fechaCreacion | date:'short' }}</td>
+                    <td>
+                        <button nz-button nzType="default" nzShape="round" nzSize="small" class="boton-editar"
+                            (click)="agregarProducto(item)">
+                            <i nz-icon nzType="edit" nzTheme="outline"></i>
+                            Editar
+                        </button>
+                    </td>
                     <td>
                         <button nz-button nzType="default" nzDanger nzShape="round" nzSize="small"
                             class="boton-eliminar" (click)="eliminarProducto(item.codigoProducto)">
