@@ -8,17 +8,29 @@ import { ProductoFormComponent } from './componentes/producto-form-component/pro
 
 @Component({
   selector: 'app-productos',
-  imports: [CommonModule, NzTableModule,NzModalModule],
+  imports: [CommonModule, NzTableModule, NzModalModule],
   templateUrl: './productos.html',
   styleUrl: './productos.scss'
 })
 export class Productos {
   agregarProducto() {
-    this.modal.create({
+    const modalRef = this.modal.create({
       nzTitle: 'Agregar nuevo producto',
       nzContent: ProductoFormComponent,
       nzFooter: null,
       nzWidth: 600
+    });
+
+    modalRef.afterClose.subscribe((mensaje: string | undefined) => {
+      if (mensaje) {
+        this.recargarProductos();
+      }
+    });
+  }
+
+  recargarProductos() {
+    this.productoService.getAll().subscribe(data => {
+      this.productos = data;
     });
   }
 
@@ -27,8 +39,6 @@ export class Productos {
   constructor(private productoService: ProductoService, private modal: NzModalService) { }
 
   ngOnInit(): void {
-    this.productoService.getAll().subscribe(data => {
-      this.productos = data;
-    });
+    this.recargarProductos();
   }
 }
